@@ -686,6 +686,113 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Before & After Section */
+        .before-after {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .before-after-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header-center {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .slider-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            cursor: ew-resize;
+            border: 8px solid var(--light);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .before-image,
+        .after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .after-image {
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: white;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        .slider-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .label-before,
+        .label-after {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .label-after {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .slider-wrapper {
+                height: 400px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -907,6 +1014,45 @@
             </div>
         </div>
     </section>
+    <!-- Before & After Section -->
+    <section class="before-after" id="before-after">
+        <div class="before-after-container">
+            <div class="section-header-center">
+                <div class="section-label">See The Difference</div>
+                <h2 class="section-title">Before & After</h2>
+                <p>See the transformation our expert craftsmanship brings to every project</p>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <img src="before.jpg" alt="Before Construction" class="before-image">
+                    <img src="after.jpg" alt="After Construction" class="after-image">
+                    <div class="slider-handle">
+                        <div class="slider-button">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                <path d="M8 15L12 11M8 15L12 19M8 15H22M22 15L18 11M22 15L18 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-labels">
+                    <span class="label-before">BEFORE</span>
+                    <span class="label-after">AFTER</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- CSS STYLES -->
+<!-- Add these styles inside your <style> tag, before the closing </style> -->
+
+        
+
+
+<!-- JAVASCRIPT -->
+<!-- Add this JavaScript at the bottom, before the closing </script> tag -->
+        
 
     <!-- Why Choose Us -->
     <section class="why-choose">
@@ -1129,6 +1275,49 @@
                     link.classList.add('active');
                 }
             });
+        });
+
+        const sliderWrapper = document.querySelector('.slider-wrapper');
+        const afterImage = document.querySelector('.after-image');
+        const sliderHandle = document.querySelector('.slider-handle');
+
+        let isSliding = false;
+
+        function updateSlider(x) {
+            const rect = sliderWrapper.getBoundingClientRect();
+            const offsetX = x - rect.left;
+            const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+            
+            afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
+            sliderHandle.style.left = `${percentage}%`;
+        }
+
+        sliderWrapper.addEventListener('mousedown', (e) => {
+            isSliding = true;
+            updateSlider(e.clientX);
+        });
+
+        sliderWrapper.addEventListener('touchstart', (e) => {
+            isSliding = true;
+            updateSlider(e.touches[0].clientX);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isSliding) return;
+            updateSlider(e.clientX);
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isSliding) return;
+            updateSlider(e.touches[0].clientX);
+        });
+
+        document.addEventListener('mouseup', () => {
+            isSliding = false;
+        });
+
+        document.addEventListener('touchend', () => {
+            isSliding = false;
         });
     </script>
 </body>
