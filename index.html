@@ -692,7 +692,7 @@
             background: white;
         }
 
-        .before-after-container {
+        .before-after-wrapper {
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -700,7 +700,58 @@
         .section-header-center {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 4rem;
+            margin: 0 auto 3rem;
+        }
+
+        /* Project Tabs */
+        .project-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background: var(--light);
+            border: 2px solid var(--border);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .tab-button:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tab-button.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Project Sliders */
+        .project-slider {
+            display: none;
+        }
+
+        .project-slider.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .slider-container {
@@ -717,6 +768,7 @@
             cursor: ew-resize;
             border: 8px solid var(--light);
             box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border-radius: 8px;
         }
 
         .before-image,
@@ -779,7 +831,7 @@
         .label-after {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--primary);
             letter-spacing: 2px;
         }
@@ -788,9 +840,49 @@
             color: var(--accent);
         }
 
+        /* Additional Photos */
+        .additional-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .photo-item {
+            text-align: center;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border: 6px solid var(--light);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .photo-item p {
+            margin-top: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             .slider-wrapper {
                 height: 400px;
+            }
+
+            .tab-button {
+                font-size: 0.75rem;
+                padding: 0.6rem 1rem;
+            }
+
+            .additional-photos {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1016,43 +1108,138 @@
     </section>
     <!-- Before & After Section -->
     <section class="before-after" id="before-after">
-        <div class="before-after-container">
+        <div class="before-after-wrapper">
             <div class="section-header-center">
-                <div class="section-label">See The Difference</div>
+                <div class="section-label">See The Transformation</div>
                 <h2 class="section-title">Before & After</h2>
-                <p>See the transformation our expert craftsmanship brings to every project</p>
+                <p>See the dramatic transformations our expert craftsmanship brings to every project</p>
             </div>
             
-            <div class="slider-container">
-                <div class="slider-wrapper">
-                    <img src="before.jpg" alt="Before Construction" class="before-image">
-                    <img src="after.jpg" alt="After Construction" class="after-image">
-                    <div class="slider-handle">
-                        <div class="slider-button">
-                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                                <path d="M8 15L12 11M8 15L12 19M8 15H22M22 15L18 11M22 15L18 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
+            <!-- Project Tabs -->
+            <div class="project-tabs">
+                <button class="tab-button active" data-project="1">Remodel Project</button>
+                <button class="tab-button" data-project="2">Rebuild Project</button>
+                <button class="tab-button" data-project="3">Sunroom Addition</button>
+                <button class="tab-button" data-project="4">Room and Porch Addition</button>
+                <button class="tab-button" data-project="5">Deck Construction</button>
+            </div>
+
+            <!-- Project 1: Original Deck Project -->
+            <div class="project-slider active" data-project="1">
+                <div class="slider-container">
+                    <div class="slider-wrapper">
+                        <img src="before.jpg" alt="Before Construction" class="before-image">
+                        <img src="after.jpg" alt="After Construction" class="after-image">
+                        <div class="slider-handle">
+                            <div class="slider-button">
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                    <path d="M8 15L12 11M8 15L12 19M8 15H22M22 15L18 11M22 15L18 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
+                    <div class="slider-labels">
+                        <span class="label-before">BEFORE</span>
+                        <span class="label-after">AFTER</span>
+                    </div>
                 </div>
-                <div class="slider-labels">
-                    <span class="label-before">BEFORE</span>
-                    <span class="label-after">AFTER</span>
+            </div>
+
+            <!-- Project 2: Covered Deck -->
+            <div class="project-slider" data-project="2">
+                <div class="slider-container">
+                    <div class="slider-wrapper">
+                        <img src="after1-1.jpeg" alt="Before Deck Construction" class="before-image">
+                        <img src="before1.jpeg" alt="After Deck Construction" class="after-image">
+                        <div class="slider-handle">
+                            <div class="slider-button">
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                    <path d="M8 15L12 11M8 15L12 19M8 15H22M22 15L18 11M22 15L18 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-labels">
+                        <span class="label-before">BEFORE</span>
+                        <span class="label-after">AFTER</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Sunroom Addition -->
+            <div class="project-slider" data-project="3">
+                <div class="slider-container">
+                    <div class="slider-wrapper">
+                        <img src="after2-1.jpeg" alt="Before Sunroom" class="before-image">
+                        <img src="before2.jpeg" alt="After Sunroom Exterior" class="after-image">
+                        <div class="slider-handle">
+                            <div class="slider-button">
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                    <path d="M8 15L12 11M8 15L12 19M8 15H22M22 15L18 11M22 15L18 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-labels">
+                        <span class="label-before">BEFORE</span>
+                        <span class="label-after">AFTER - EXTERIOR</span>
+                    </div>
+                </div>
+                <div class="additional-photos">
+                    <div class="photo-item">
+                        <img src="after2-2.jpeg" alt="Sunroom Interior View 1">
+                        <p>Interior With Skylights</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="after2-3.jpeg" alt="Sunroom Interior View 2">
+                        <p>Finished Interior Space</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Deck Construction -->
+            <div class="project-slider" data-project="4">
+                <div class="slider-container">
+                    <div class="slider-wrapper">
+                        <img src="after3.jpeg" alt="Before Deck Framing" class="before-image">
+                        <img src="before3.jpeg" alt="After Deck Complete" class="after-image">
+                        <div class="slider-handle">
+                            <div class="slider-button">
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                    <path d="M8 15L12 11M8 15L12 19M8 15H22M22 15L18 11M22 15L18 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-labels">
+                        <span class="label-before">BEFORE</span>
+                        <span class="label-after">AFTER</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Exterior Remodel -->
+            <div class="project-slider" data-project="5">
+                <div class="slider-container">
+                    <div class="slider-wrapper">
+                        <img src="before4-3.jpeg" alt="Before Exterior Remodel" class="before-image">
+                        <img src="before4-1.jpeg" alt="After Exterior Complete" class="after-image">
+                        <div class="slider-handle">
+                            <div class="slider-button">
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                    <path d="M8 15L12 11M8 15L12 19M8 15H22M22 15L18 11M22 15L18 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-labels">
+                        <span class="label-before">BEFORE - EXTERIOR</span>
+                        <span class="label-after">AFTER</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-<!-- CSS STYLES -->
-<!-- Add these styles inside your <style> tag, before the closing </style> -->
-
-        
-
-
-<!-- JAVASCRIPT -->
-<!-- Add this JavaScript at the bottom, before the closing </script> tag -->
-        
 
     <!-- Why Choose Us -->
     <section class="why-choose">
@@ -1113,7 +1300,7 @@
                         <div class="contact-icon">✉️</div>
                         <div class="contact-text">
                             <h4>Email</h4>
-                            <p><a href="mailto:Vargasconstruction011@gmail.com">Vargasconstruction011@gmail.com</p></a>
+                            <p><a href="/cdn-cgi/l/email-protection#580e392a3f392b3b37362b2c2a2d3b2c313736686969183f35393134763b3735"><span class="__cf_email__" data-cfemail="c89ea9baafa9bbaba7a6bbbcbabdabbca1a7a6f8f9f988afa5a9a1a4e6aba7a5">[email&#160;protected]</span></p></a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1201,7 +1388,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1278,40 +1465,7 @@
         });
 
         const sliderWrapper = document.querySelector('.slider-wrapper');
-        const afterImage = document.querySelector('.after-image');
-        const sliderHandle = document.querySelector('.slider-handle');
-
-        let isSliding = false;
-
-        function updateSlider(x) {
-            const rect = sliderWrapper.getBoundingClientRect();
-            const offsetX = x - rect.left;
-            const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
-            
-            afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
-            sliderHandle.style.left = `${percentage}%`;
-        }
-
-        sliderWrapper.addEventListener('mousedown', (e) => {
-            isSliding = true;
-            updateSlider(e.clientX);
-        });
-
-        sliderWrapper.addEventListener('touchstart', (e) => {
-            isSliding = true;
-            updateSlider(e.touches[0].clientX);
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isSliding) return;
-            updateSlider(e.clientX);
-        });
-
-        document.addEventListener('touchmove', (e) => {
-            if (!isSliding) return;
-            updateSlider(e.touches[0].clientX);
-        });
-
+        
         document.addEventListener('mouseup', () => {
             isSliding = false;
         });
@@ -1319,7 +1473,79 @@
         document.addEventListener('touchend', () => {
             isSliding = false;
         });
+
+        // Before & After Multi-Project Functionality
+        function initBeforeAfterSliders() {
+            const allWrappers = document.querySelectorAll('.slider-wrapper');
+            
+            allWrappers.forEach(wrapper => {
+                const afterImage = wrapper.querySelector('.after-image');
+                const sliderHandle = wrapper.querySelector('.slider-handle');
+                let isSliding = false;
+
+                function updateSlider(x) {
+                    const rect = wrapper.getBoundingClientRect();
+                    const offsetX = x - rect.left;
+                    const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+                    
+                    afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
+                    sliderHandle.style.left = `${percentage}%`;
+                }
+
+                wrapper.addEventListener('mousedown', (e) => {
+                    isSliding = true;
+                    updateSlider(e.clientX);
+                });
+
+                wrapper.addEventListener('touchstart', (e) => {
+                    isSliding = true;
+                    updateSlider(e.touches[0].clientX);
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isSliding) return;
+                    updateSlider(e.clientX);
+                });
+
+                document.addEventListener('touchmove', (e) => {
+                    if (!isSliding) return;
+                    updateSlider(e.touches[0].clientX);
+                });
+
+                document.addEventListener('mouseup', () => {
+                    isSliding = false;
+                });
+
+                document.addEventListener('touchend', () => {
+                    isSliding = false;
+                });
+            });
+        }
+
+        // Project Tab Switching
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const projectSliders = document.querySelectorAll('.project-slider');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const projectId = button.getAttribute('data-project');
+                
+                // Update active tab
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Update active project
+                projectSliders.forEach(slider => {
+                    slider.classList.remove('active');
+                    if (slider.getAttribute('data-project') === projectId) {
+                        slider.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Initialize sliders on page load
+        initBeforeAfterSliders();
     </script>
 </body>
 </html>
-   
