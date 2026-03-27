@@ -356,51 +356,7 @@
         .portfolio-header {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-
-        /* Portfolio Tabs */
-        .portfolio-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .portfolio-tab-button {
-            padding: 0.8rem 2.5rem;
-            background: var(--light);
-            border: 2px solid var(--border);
-            color: var(--text);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 4px;
-        }
-
-        .portfolio-tab-button:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .portfolio-tab-button.active {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-
-        .portfolio-category {
-            display: none;
-        }
-
-        .portfolio-category.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
+            margin: 0 auto 4rem;
         }
 
         .portfolio-grid {
@@ -1105,108 +1061,47 @@
             <h2 class="section-title">Recent Projects</h2>
             <p>Take a look at some of our recently completed projects showcasing our commitment to quality and craftsmanship.</p>
         </div>
-
-        <!-- Portfolio Tabs -->
-        <div class="portfolio-tabs">
-            <button class="portfolio-tab-button active" data-category="residential">Residential</button>
-            <button class="portfolio-tab-button" data-category="commercial">Commercial</button>
-        </div>
-
-        <!-- Residential Projects -->
-        <div class="portfolio-category active" data-category="residential">
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="newcons4.jpg" alt="Modern New Construction">
-                    <div class="portfolio-overlay">
-                        <h3>Modern New Construction</h3>
-                        <p>Contemporary residential build with striking design</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="deck2.jpg" alt="Custom Deck">
-                    <div class="portfolio-overlay">
-                        <h3>Custom Deck & Pergola</h3>
-                        <p>Beautiful outdoor living space with premium materials</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="Sunroom3.jpg" alt="Sunroom Addition">
-                    <div class="portfolio-overlay">
-                        <h3>Sunroom Addition</h3>
-                        <p>Bright, spacious sunroom with vaulted ceilings</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="deck3.jpg" alt="Deck with Pergola">
-                    <div class="portfolio-overlay">
-                        <h3>Deck & Pergola Design</h3>
-                        <p>Custom outdoor entertainment space</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="Sunroom4.jpg" alt="Sunroom Exterior">
-                    <div class="portfolio-overlay">
-                        <h3>Sunroom Exterior</h3>
-                        <p>Quality siding and finish work</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="exterior4.jpg" alt="Pergola Construction">
-                    <div class="portfolio-overlay">
-                        <h3>Covered Deck Construction</h3>
-                        <p>Premium pergola and deck installation</p>
-                    </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="newcons4.jpg" alt="Modern New Construction">
+                <div class="portfolio-overlay">
+                    <h3>Modern New Construction</h3>
+                    <p>Contemporary residential build with striking design</p>
                 </div>
             </div>
-        </div>
-
-        <!-- Commercial Projects -->
-        <div class="portfolio-category" data-category="commercial">
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="IMG_4785_Medium.jpeg" alt="Commercial Meeting Room">
-                    <div class="portfolio-overlay">
-                    </div>
+            <div class="portfolio-item">
+                <img src="deck2.jpg" alt="Custom Deck">
+                <div class="portfolio-overlay">
+                    <h3>Custom Deck & Pergola</h3>
+                    <p>Beautiful outdoor living space with premium materials</p>
                 </div>
-                <div class="portfolio-item">
-                    <img src="IMG_4793_Medium.jpeg" alt="Commercial Locker Room">
-                    <div class="portfolio-overlay">
-                    </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="Sunroom3.jpg" alt="Sunroom Addition">
+                <div class="portfolio-overlay">
+                    <h3>Sunroom Addition</h3>
+                    <p>Bright, spacious sunroom with vaulted ceilings</p>
                 </div>
-                <div class="portfolio-item">
-                    <img src="IMG_4805_Medium.jpeg" alt="Commercial Breakroom">
-                    <div class="portfolio-overlay">
-                    </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="deck3.jpg" alt="Deck with Pergola">
+                <div class="portfolio-overlay">
+                    <h3>Deck & Pergola Design</h3>
+                    <p>Custom outdoor entertainment space</p>
                 </div>
-                <div class="portfolio-item">
-                    <img src="IMG_4790_Medium.jpeg" alt="Commercial Restroom">
-                    <div class="portfolio-overlay">
-                    </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="Sunroom4.jpg" alt="Sunroom Exterior">
+                <div class="portfolio-overlay">
+                    <h3>Sunroom Exterior</h3>
+                    <p>Quality siding and finish work</p>
                 </div>
-                <div class="portfolio-item">
-                    <img src="IMG_4800_Medium.jpeg" alt="Conference Room Design">
-                    <div class="portfolio-overlay">
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="IMG_4786_Medium.jpeg" alt="Commercial Open Space">
-                    <div class="portfolio-overlay">
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="IMG_4787_Medium.jpeg" alt="Break Room Kitchen">
-                    <div class="portfolio-overlay">
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="IMG_4788_Medium.jpeg" alt="Commercial Bathroom">
-                    <div class="portfolio-overlay">
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="IMG_4802_Medium.jpeg" alt="Commercial Interior">
-                    <div class="portfolio-overlay">
-                    </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="exterior4.jpg" alt="Pergola Construction">
+                <div class="portfolio-overlay">
+                    <h3>Covered Deck Construction</h3>
+                    <p>Premium pergola and deck installation</p>
                 </div>
             </div>
         </div>
@@ -1505,28 +1400,6 @@
                         block: 'start'
                     });
                 }
-            });
-        });
-
-        // Portfolio Tab Switching
-        const portfolioTabButtons = document.querySelectorAll('.portfolio-tab-button');
-        const portfolioCategories = document.querySelectorAll('.portfolio-category');
-
-        portfolioTabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const categoryName = button.getAttribute('data-category');
-                
-                // Update active tab
-                portfolioTabButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // Update active category
-                portfolioCategories.forEach(category => {
-                    category.classList.remove('active');
-                    if (category.getAttribute('data-category') === categoryName) {
-                        category.classList.add('active');
-                    }
-                });
             });
         });
 
